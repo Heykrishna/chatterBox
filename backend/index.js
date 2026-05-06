@@ -12,23 +12,24 @@ import messageRouter from "./routes/message.routes.js"
 import { app, server } from "./socket.js"
 dotenv.config()
 
-const port=process.env.PORT || 5000
+const port = process.env.PORT || 5000
+
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true
+    origin: "http://localhost:5173",
+    credentials: true
 }))
 app.use(express.json())
 app.use(cookieParser())
 
-app.use("/api/auth",authRouter)
-app.use("/api/user",userRouter)
-app.use("/api/post",postRouter)
-app.use("/api/loop",loopRouter)
-app.use("/api/story",storyRouter)
-app.use("/api/message",messageRouter)
+app.use("/api/auth", authRouter)
+app.use("/api/user", userRouter)
+app.use("/api/post", postRouter)
+app.use("/api/loop", loopRouter)
+app.use("/api/story", storyRouter)
+app.use("/api/message", messageRouter)
 
 
-server.listen(port , ()=>{
+server.listen(port, () => {
     connectDb()
     console.log("server started")
 })
